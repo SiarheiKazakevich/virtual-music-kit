@@ -32,11 +32,24 @@ drums.forEach(drum => {
 function playSound(soundPath) {
   const audio = new Audio(soundPath);
   audio.currentTime = 0;
-  audio.play();
+  audio.play().catch(err => console.log('Audio play error:', err));;
 }
 drumContainer.addEventListener('click', e => {
   if (!e.target.classList.contains('drum')) return;
   const soundPath = e.target.dataset.sound;
   playSound(soundPath);
-  /*flashButton(e.target.dataset.key);*/
+
+})
+function flashButton(key) {
+  const button = document.querySelector(`[data-key="${key.toUpperCase()}"]`);
+  if (!button) return;
+  button.classList.add('active');
+  setTimeout(() => button.classList.remove('active'), 150);
+}
+document.addEventListener('keydown', e => {
+  const drum = drums.find(d => d.key === e.code.replace('Key', ''));
+  if (drum) {
+    playSound(drum.file);
+    flashButton(drum.key);
+  }
 })
