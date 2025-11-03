@@ -1,0 +1,71 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #111;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.drum-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.drums:hover {
+  cursor: url(../images/wand.png) 4 0, auto;
+}
+
+.drum {
+  width: 80px;
+  height: 80px;
+  border-radius: 33px;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.drum:hover {
+  background-color: #333;
+  cursor: url(../images/wand2.png) 4 0, auto;
+}
+
+.drum:active {
+  background-color: #0f0;
+  transform: scale(1.1);
+}
+
+.drum.active {
+  background-color: #0f0;
+  transform: scale(1.1);
+}
+
+button:focus-visible {
+  outline: none;
+  /*box-shadow: 0 0 0 3px gold;  кастомное кольцо фокуса */
+}
+
+/* === Адаптивность === */
+@media(max-width: 600px) {
+  .drum {
+    width: 60px;
+    height: 60px;
+    font-size: 18px;
+  }
+}
